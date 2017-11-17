@@ -1,8 +1,26 @@
 /* red:#D43C33 */
+/* grey:#888888;  灰色*/
 
 
 body{
 	font-size:15px;
+}
+.sectionTitle{    /*  */
+	border-left:2px solid #D43C33;
+	font-size:17px;
+	line-height:1;
+	padding-left:8px;
+	margin:20px 0 8px;
+}
+
+/*  */
+.sticky{
+	position:fixed;    /* 表头固定不动(以下5行) */
+	top:0;
+	left:0;
+	width:100%;
+	z-index:1;
+	background:white;
 }
 section.topbar{
 	display:flex;
@@ -10,7 +28,6 @@ section.topbar{
 	align-items:center;
 	background: #D43C33;
 	padding:17px 10px;
-
 }
 section.topbar .logo>svg{
 	width:142px;
@@ -49,7 +66,7 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	text-align:center;
 	line-height:20px;
 	//padding:10px 0;
-	display:flex;     /* 3行一起组合为可实现自动居中 */
+	display:flex;     /* 一起组合为可实现自动居中(以下3行) */
 	justify-content:center;
 	align-items:center;
 }
@@ -76,6 +93,9 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	left:0;
 	width:100%;
 }
+.tab-content{
+	margin-top:105px;  /* 欲表头不动需整体下移 */
+}
 .tab-content > li{
 	display:none;
 }
@@ -83,18 +103,26 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	display:block;
 	//background:red;
 }
+.noCollapse::before{   /* 解决margin合并问题(以下2行)，相当于有实线遮挡 */
+	content:'';
+	display:table;
+ /* border:1px solid red;
+	width:100%; */
+}
+.noCollapse::after{  /* 谁不想合并在html上加noCollapse */
+	content:'';
+	display:table;
+}
 
 
 /*  */
 section.globalTabs{}
 section.playlists{}
-section.playlists > h2{
-	border-left:2px solid #D43C33;
-	font-size:17px;
-	line-height:1;
-	padding-left:8px;
-	margin:20px 0 8px;
+section.playlists{
+	/*//overflow:hidden; */  /* 解决margin合并问题，不用overflow有副作用 */
 }
+	
+section.playlists > h2{}
 section.playlists > ol.songs{
 	display:flex;   /* 图片为两行，下面分三等分33.333333% */
 	flex-wrap:wrap;  /* 图片换行 */
@@ -106,10 +134,10 @@ section.playlists > ol.songs > li{
 	margin:8px 0;  /* 两行上下间距 */
 }
 section.playlists > ol.songs > li p{
-	display: -webkit-box;    /*文字两行以上变省略号 */
+	display: -webkit-box;    /*文字两行以上变省略号(以下4行) */
 	-webkit-line-clamp:2;
 	-webkit-box-orient:vertical;
-	overflow:hidden;         /*  */
+	overflow:hidden;  
 	line-height:18px;
 	height:36px;
     //text-overflow:ellipsis;
@@ -117,6 +145,74 @@ section.playlists > ol.songs > li p{
 }
 section.playlists > ol.songs > li img{
 	width:100%;
+	height:123px;   /* 写高度防止浏览器刷新时出现跳闪塌陷问题 */
 }
+
+/*  */
 section.songs{}
-section.art{}
+section.songs > .list{
+	margin-top:18px;
+}
+section.songs > .list > li > h3{
+	font-size:17px;
+}
+section.songs > .list > li > p{
+	font-size:12px;
+	color:#888888;
+}
+section.songs > .list > li{
+	position:relative;
+	//border:1px solid red;
+	margin-left:10px;
+	padding-bottom:6px;
+	padding-top:L5px;
+	border-bottom:1px solid #F0F0F1;
+}
+section.songs > .list .playButton{
+	position:absolute;
+	right:8px;
+	top:50%;
+	transform:translateY(-50%);   /* 播放图标居中 */
+}
+section.songs > .list .icon-sq{
+	fill:#FE672E;            /* fill为svg属性*/
+	//border:1px solid green;
+}
+section.songs > .list .icon-play{
+	width:22px;
+	height:22px;
+	//border:1px solid green;
+	vertical-align:middle;  /* 图标向下移动真正居中 */
+	fill:#AAAAAA;
+}
+
+/*  */
+section.art{
+	padding-top:38px;
+	padding-bottom:18px;
+	background:transparent url(http://s3.music.126.net/m/s/img/recommand_bg_2x.png?d045fafc60e017b653f8065a87496922) no-repeat center 0;
+    background-size:cover;   /* 图片缩放属性 */
+    text-align:center;
+}
+section.art svg{
+	width:230px;
+	height:44px;
+}
+section.art .link-wrapper > a{
+	display:inline-block; 
+	border:1px solid;
+	line-height:40px;
+	font-size:16px;
+	padding:0 19px;
+	border-radius:20px;
+	color:#D43C33;
+	margin-top:10px;
+}
+section.art .copyright{
+	font-size:12px;
+	color:#888;
+	transform:scale(.75);
+	text-align:center;
+	margin-bottom:5px;
+	transform: scale(.75);  /* 字体不能小于12px，进行缩放 */	
+}
