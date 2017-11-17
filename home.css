@@ -1,8 +1,122 @@
-*{margin:0; padding:0;}
-*{box-sizing: border-box;}
-*::after{box-sizing: border-box;}
-*::before{box-sizing: border-box;}
+/* red:#D43C33 */
 
-a{color:inherit;}
-ul,ol{list-style:none;}
-h1,h2,h3,h4,h5,h6{font-weight:normal;} //字体取消粗体
+
+body{
+	font-size:15px;
+}
+section.topbar{
+	display:flex;
+	justify-content:space-between;   /*两边位置*/
+	align-items:center;
+	background: #D43C33;
+	padding:17px 10px;
+
+}
+section.topbar .logo>svg{
+	width:142px;
+	height:25px;
+	vertical-align:top;   /* 解决svg的多余底边 */
+}
+section.topbar > a{
+	color:white;
+	display:inline-block;
+	//border:1px solid;
+	//font-size:4.6875vw;
+	padding:5px 11px;
+	line-height:20px;
+	position:relative;
+}
+section.topbar > a::after{    /* 利用伪类元素制作边框border */
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:200%;
+	height:200%;
+	border:1px solid white;
+	border-radius:50px;
+	transform:scale(0.5);
+	transform-origin:0 0;
+}
+
+/* tabs */
+.tabs{
+	display:flex;
+	border:1px solid #E6E6E6;
+}
+.tabs > li{
+	width:33.333333%;
+	text-align:center;
+	line-height:20px;
+	//padding:10px 0;
+	display:flex;     /* 3行一起组合为可实现自动居中 */
+	justify-content:center;
+	align-items:center;
+}
+.tabs > li > .text{
+	padding:10px 5px;
+	position:relative;    /* 绝对定位前必须有相对定位 */
+	/*//display:inline-block;
+	//vertical-align:top; */ /* 解决inline-block自带的bug */
+	top:1px;
+}
+.tabs > li.active{
+	//background:red;
+	color:#D43C33;
+	//position:relative;
+}
+.tabs > li.active > .text{
+}
+.tabs > li.active > .text::after{
+	content:'';
+	position:absolute;    /* 绝对定位前必须有相对定位 */
+	height:2px;
+	background:#D43C33;
+	bottom:1px;
+	left:0;
+	width:100%;
+}
+.tab-content > li{
+	display:none;
+}
+.tab-content > li.active{
+	display:block;
+	//background:red;
+}
+
+
+/*  */
+section.globalTabs{}
+section.playlists{}
+section.playlists > h2{
+	border-left:2px solid #D43C33;
+	font-size:17px;
+	line-height:1;
+	padding-left:8px;
+	margin:20px 0 8px;
+}
+section.playlists > ol.songs{
+	display:flex;   /* 图片为两行，下面分三等分33.333333% */
+	flex-wrap:wrap;  /* 图片换行 */
+	justify-content:space-between;  /* 图片连接处空隙 */
+	font-size:13px;
+}
+section.playlists > ol.songs > li{
+	width:32.8%;
+	margin:8px 0;  /* 两行上下间距 */
+}
+section.playlists > ol.songs > li p{
+	display: -webkit-box;    /*文字两行以上变省略号 */
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+	overflow:hidden;         /*  */
+	line-height:18px;
+	height:36px;
+    //text-overflow:ellipsis;
+    padding:0 6px;
+}
+section.playlists > ol.songs > li img{
+	width:100%;
+}
+section.songs{}
+section.art{}
