@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./home.css">
+  <link rel="stylesheet" href="./vendors/loaders.min.css">
 </head>
 <body>
 
@@ -66,135 +67,10 @@
 	</section>
 	<section class="songs">
 		<h2 class="sectionTitle">最新音乐</h2>
-		<ol class="list">	
-           <li>
-				<h3>歌曲<small>名1</small></h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                       <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-                </a>
-			</li>
-			<li>
-				<h3>歌曲名2</h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名3</h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名4</h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名5</h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名6</h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名7</h3>
-				<p>
-					<svg class="icon icon-sq">
-						<use xlink:href="#icon-sq"></use>
-					</svg>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名8</h3>
-				<p>
-					演唱者-专辑
-				</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-			<li>
-				<h3>歌曲名9</h3>
-				<p>演唱者-专辑</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
-
-			<li>
-				<h3>歌曲名10</h3>
-				<p>演唱者-专辑</p>
-				<a class="playButton" href="#">
-					<svg class="icon icon-play">
-                         <use xlink:href="#icon-play-circled"></use>
-                    </svg>
-				</a>
-			</li>
+		<ol id="songs" class="list">	
+		
+			<div id="songs-loading" style="margin:0 auto;width:50px;height:40;background:red;"><div class="line-scale"><div></div><div></div><div></div><div></div><div></div></div></div>
+           
 		</ol>
 	</section>
 
@@ -221,7 +97,8 @@
 
 
 <script src="//at.alicdn.com/t/font_462409_9vyfqvmnb6yo80k9.js"></script>
-<script src="./vendors./jquery.min.js"></script>
+<script src="./vendors/jquery.min.js"></script>
+<script src="./vendors/av-min.js"></script>
 <script>
   $('.tabs').on('click','li', function(e){
    	let $li = $(e.currentTarget)
@@ -230,6 +107,59 @@
    	$('.tab-content').children().eq(index)
    	   .addClass('active').siblings().removeClass('active')
    })
+</script>
+<script>
+var APP_ID = '7luz4eKHS2G2BKH25SbReBFD-gzGzoHsz';
+var APP_KEY = 'WQXU6aT2rRBIwtB8Ki5x8KdC';
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+
+
+let $olSongs = $('ol#songs')
+
+ var query = new AV.Query('Song');
+ query.find().then(function (results) {
+ 	//console.log(results)
+ 	$('#songs-loading').remove()  /* 数据加载成功后loading移除 */
+ 	for(var i=0; i<results.length;i++){
+ 		//console.log(results[i].attributes)
+ 		let song = results[i].attributes
+ 		let li = `
+
+  			<li>
+				<h3>${song.name}</h3>
+				<p>
+					<svg class="icon icon-sq">
+						<use xlink:href="#icon-sq"></use>
+					</svg>
+					${song.singer}
+				</p>
+				<a class="playButton" href="#">
+					<svg class="icon icon-play">
+                       <use xlink:href="#icon-play-circled"></use>
+                    </svg>
+                </a>
+			</li>
+		`
+ 		$olSongs.append(li)
+ 	}
+ 	  }, function (error) {
+ 	  	alert('获取歌曲失败')
+  });
+
+
+/*var SongObject = AV.Object.extend('Song');  //选择表名
+var songObject = new SongObject();   //生成一条数据
+songObject.save({
+  name: '80000' ,  //数据里面的内容
+  singer: 'PRC巴音汗',
+  url:'http://oz3p5w9wm.bkt.clouddn.com/80000.mp3'
+}).then(function(object) {
+  alert('保存成功!');
+}) */
 </script>
 
 
