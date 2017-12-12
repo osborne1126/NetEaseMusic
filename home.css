@@ -4,43 +4,60 @@
 
 body{
 	font-size:15px;
+	background:#FCFCFD;
 }
-.sectionTitle{    /*  */
-	border-left:2px solid #D43C33;
-	font-size:17px;
-	line-height:1;
-	padding-left:8px;
-	margin:20px 0 8px;
+#loading{
+  text-align: center;
 }
 
-/*  */
+/* 通用标题 */
+.sectionTitle{ 
+	border-left:2px solid #D43C33;
+	font-size:17px;
+	line-height:1;  /*和字体一样高*/
+	padding-left:8px;
+	margin:20px 0 8px;
+	color:#333;
+}
+.noCollapse::before{ 
+    content:'';  
+	display:table;
+   //border:1px solid red;  /* 解决margin合并问题(以下2行)，相当于有实线遮挡 */
+	//width:100%; 
+}
+.noCollapse::after{  /* 谁不想合并在html上加noCollapse */
+	content:'';
+	display:table;
+}
+
+/* topbar */
 .sticky{
 	position:fixed;    /* 表头固定不动(以下5行) */
 	top:0;
 	left:0;
 	width:100%;
-	z-index:1;
-	background:white;
+	z-index:3;    /* //1,设置3可使后续不透明*/
+	background:#fff;
 }
 section.topbar{
-	display:flex;
+	display: flex;
 	justify-content:space-between;   /*两边位置*/
 	align-items:center;
 	background: #D43C33;
-	padding:17px 10px;
+	padding:17px 10px;  /* //5.3125vw 3.123vw */
 }
 section.topbar .logo>svg{
-	width:142px;
-	height:25px;
+	width:142px;   /* //44.375vw */
+	height:25px;   /* //7.8125vw */
 	vertical-align:top;   /* 解决svg的多余底边 */
 }
 section.topbar > a{
 	color:white;
 	display:inline-block;
 	//border:1px solid;
-	//font-size:4.6875vw;
-	padding:5px 11px;
-	line-height:20px;
+	font-size:15px;    /* //4.6875vw */
+	padding:5px 11px;   /* //1.5625vw  3.4375vw*/
+	line-height:20px;   /* //6.25vw */
 	position:relative;
 }
 section.topbar > a::after{    /* 利用伪类元素制作边框border */
@@ -51,24 +68,24 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	width:200%;
 	height:200%;
 	border:1px solid white;
-	border-radius:50px;
+	border-radius:50px;   /* //6.25vw */
 	transform:scale(0.5);
 	transform-origin:0 0;
 }
 
-/* tabs */
+/* tab */
 .tabs{
 	display:flex;
-	border:1px solid #E6E6E6;
+	border-bottom:1px solid #E6E6E6;
 }
 .tabs > li{
 	width:33.333333%;
 	text-align:center;
 	line-height:20px;
 	//padding:10px 0;
-	display:flex;     /* 一起组合为可实现自动居中(以下3行) */
-	justify-content:center;
-	align-items:center;
+	display:flex;     /*自动收缩*//* 一起组合为可实现自动居中(以下3行) */
+	justify-content:center;   /*左右居中*/
+	align-items:center;   /*上下居中*/
 }
 .tabs > li > .text{
 	padding:10px 5px;
@@ -82,17 +99,18 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	color:#D43C33;
 	//position:relative;
 }
-.tabs > li.active > .text{
-}
-.tabs > li.active > .text::after{
+.tabs > li.active > .text{}
+.tabs > li.active > .text::after{   /*active时的底边状态*/
 	content:'';
 	position:absolute;    /* 绝对定位前必须有相对定位 */
 	height:2px;
 	background:#D43C33;
-	bottom:1px;
+	bottom:1px;    /* //0*/
 	left:0;
 	width:100%;
 }
+
+/*page-1整体*/
 .tab-content{
 	margin-top:105px;  /* 欲表头不动需整体下移 */
 }
@@ -103,71 +121,119 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	display:block;
 	//background:red;
 }
-.noCollapse::before{   /* 解决margin合并问题(以下2行)，相当于有实线遮挡 */
-	content:'';
-	display:table;
- /* border:1px solid red;
-	width:100%; */
-}
-.noCollapse::after{  /* 谁不想合并在html上加noCollapse */
-	content:'';
-	display:table;
-}
 
+//.noCollapse::after{}
+//.noCollapse::before{}
 
-/*  */
-section.globalTabs{}
-section.playlists{}
+section.globalTabs{} 
+/* 推荐歌单 */
 section.playlists{
 	/*//overflow:hidden; */  /* 解决margin合并问题，不用overflow有副作用 */
-}
-	
+   padding-bottom: 12px;
+}	
 section.playlists > h2{}
 section.playlists > ol.songs{
 	display:flex;   /* 图片为两行，下面分三等分33.333333% */
 	flex-wrap:wrap;  /* 图片换行 */
-	justify-content:space-between;  /* 图片连接处空隙 */
+	justify-content:space-between;  /*两边布局*//*图片连接处空隙 */
 	font-size:13px;
 }
+
+.cover{
+    position: relative;
+}
+.cover >.amount{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    padding-left: 13px;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 3px;
+    padding-right: 5px;
+    width: 100%;
+}
+.cover >.amount .icon-listen{
+    margin-top: 2px;
+    margin-right: 3px;
+ //border:1px solid red; /**/
+}
+.cover >.amount::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    z-index: -1;
+    background-image: linear-gradient(180deg,rgba(0,0,0,.2),transparent);
+    padding: 0;
+} 
+section.playlists > ol.songs .cover > img{
+    /* height: 105px; */
+}
+
 section.playlists > ol.songs > li{
 	width:32.8%;
 	margin:8px 0;  /* 两行上下间距 */
 }
-section.playlists > ol.songs > li p{
-	display: -webkit-box;    /*文字两行以上变省略号(以下4行) */
-	-webkit-line-clamp:2;
-	-webkit-box-orient:vertical;
-	overflow:hidden;  
-	line-height:18px;
-	height:36px;
+section.playlists > ol.songs > li >a> p{ 
+     padding:6px 2px 0 6px;
+     //height:36px;
+     line-height:1.2; 
+     color:#333;
     //text-overflow:ellipsis;
-    padding:0 6px;
+ //border:1px solid red;
+	display: -webkit-box;    /*文字两行以上变省略号(以下4行) */
+	-webkit-line-clamp:2;  /*行数*/
+	-webkit-box-orient:vertical;
+	overflow:hidden;    
 }
 section.playlists > ol.songs > li img{
 	width:100%;
-	height:123px;   /* 写高度防止浏览器刷新时出现跳闪塌陷问题 */
+	//height:123px;   /* 写高度防止浏览器刷新时出现跳闪塌陷问题 */
 }
 
-/*  */
+/* 最新音乐列表 */
 section.songs{}
 section.songs > .list{
 	margin-top:18px;
 }
-section.songs > .list > li > h3{
+section.songs > .list > li > a > h3{
 	font-size:17px;
+    /*h3过长可隐藏*/
+	color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    width: 86%;
 }
-section.songs > .list > li > p{
+section.songs > .list > li > a > h3 >span{
+    color: #888;
+}
+section.songs > .list > li > a > p{
 	font-size:12px;
 	color:#888888;
+    /*p过长可隐藏*/
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    width: 86%;
 }
 section.songs > .list > li{
 	position:relative;
 	//border:1px solid red;
 	margin-left:10px;
-	padding-bottom:6px;
-	padding-top:L5px;
+	padding-bottom:8px;
+	padding-top:7px;
 	border-bottom:1px solid #F0F0F1;
 }
+
 section.songs > .list .playButton{
 	position:absolute;
 	right:8px;
@@ -176,17 +242,21 @@ section.songs > .list .playButton{
 }
 section.songs > .list .icon-sq{
 	fill:#FE672E;            /* fill为svg属性*/
-	//border:1px solid green;
+//border:1px solid red; /**/
+	width: 16px;
+    height: 14px;
+    margin-right: 4px;
+    vertical-align: bottom;
 }
 section.songs > .list .icon-play{
-	width:22px;
-	height:22px;
-	//border:1px solid green;
+	width:25px;
+	height:25px;
+ //border:1px solid red; /**/
 	vertical-align:middle;  /* 图标向下移动真正居中 */
 	fill:#AAAAAA;
 }
 
-/*  */
+/* art */
 section.art{
 	padding-top:38px;
 	padding-bottom:18px;
@@ -206,13 +276,232 @@ section.art .link-wrapper > a{
 	padding:0 19px;
 	border-radius:20px;
 	color:#D43C33;
-	margin-top:10px;
+	margin-top:18px;
+	margin-bottom: 5px;
 }
 section.art .copyright{
 	font-size:12px;
 	color:#888;
-	transform:scale(.75);
-	text-align:center;
-	margin-bottom:5px;
-	transform: scale(.75);  /* 字体不能小于12px，进行缩放 */	
+	//text-align:center;
+	//margin-bottom:5px;
+	transform: scale(.75);   /* 字体不能小于12px，进行缩放 */	
 }
+
+
+/* 第二页热歌榜 */
+.page-2{
+    width: 100%;
+    height: 100%;
+  }
+.page-2>.banner{
+    position:relative;
+    padding-top: 38.9%;
+    //overflow:hidden;
+    background: url(http://s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
+    background-size: cover;   /*背景图片*/
+}
+.page-2>.banner>.info{
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding-left: 20px;
+    padding-bottom:1px;   
+}
+.page-2>.banner>.info>.hot-img{
+    width: 142px;
+    height:67px;
+    background-position:-24px -30px;  /*调整图片合理位置隐藏其他*/
+    background: url(http://s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+    background-size: 166px 97px;
+}
+/*.page-2>.banner::after{   /、在图片和文字间产生线隔离开
+    content: "";
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index:1; //
+} */
+.page-2>.banner>.info>.updateTime{
+    font-size: 12px;
+    transform: scale(.91);
+    -webkit-transform: scale(.91);
+    -moz-transform: scale(.91);
+    margin-top: 10px;
+    /*//margin-left: -6px; */
+    transform-origin: left top;
+    color: #fff;
+}
+section.songs > #hotsongs{
+    margin-top: 0;
+}
+section.songs >.hotlist{
+    margin-left: 28px;
+}
+.hotlist .num{
+    position: absolute;
+    top: 50%;
+    left: -6%;
+    color: #999;
+    font-size: 17px;
+    transform: translate(-50%,-50%);
+}
+.hotlist .hotnum{
+    color: #df3436;
+}
+
+section.hotdn{
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+}
+section.hotdn > a{
+    font-size: 14px;
+    color: #999;
+}
+
+
+/* 第三页搜索 */
+.page-3 >.inputWrapper {
+    position: relative;
+    width: 94.6%;
+    height: 30px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    background: #ebecec;
+    border-radius: 30px;
+    text-align: center;
+    margin: 15px auto;
+    color: #c9c9c9;
+
+ /*  background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNiAyNiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjYzljOWNhIiBkPSJNMjUuMTgxLDIzLjUzNWwtMS40MTQsMS40MTRsLTcuMzE1LTcuMzE0CgkJQzE0LjcwOSwxOS4xMDcsMTIuNDYsMjAsMTAsMjBDNC40NzcsMjAsMCwxNS41MjMsMCwxMEMwLDQuNDc3LDQuNDc3LDAsMTAsMGM1LjUyMywwLDEwLDQuNDc3LDEwLDEwYzAsMi4zNDItMC44MTEsNC40OS0yLjE2LDYuMTk1CgkJTDI1LjE4MSwyMy41MzV6IE0xMCwyYy00LjQxOCwwLTgsMy41ODItOCw4czMuNTgyLDgsOCw4YzQuNDE4LDAsOC0zLjU4Miw4LThTMTQuNDE4LDIsMTAsMnoiLz48L3N2Zz4=);
+    background-position:-0.1px;
+    background-repeat:no-repeat;
+    background-size:15px 15px;
+    //left:5px;  */
+}
+.page-3 >.inputWrapper .magnifier{ 
+ //border:1px solid red; /**/
+    position: absolute;
+    top: 7px;
+    left: 8px;
+}
+.page-3 >.inputWrapper .close{
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    color: #999;
+ //border:1px solid red; /**/
+}
+.page-3 input {
+    width: 100%;
+    height: 30px;
+    line-height: 18px;
+    background: transparent;
+   /* //position:absolute; 去掉定位实现框包含框*/
+    font-size: 14px;
+    color: #333;
+    border: 0;
+    outline: none;
+}
+.page-3 >.inputWrapper > label.holder{
+    position: absolute;
+    left: 30px;
+    top: 5px;
+    font-size: 14px;
+    color: #c9c9c9;
+    background: transparent;
+    pointer-events: none;	
+} 
+
+/* 
+section .searchText{
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    line-height: 50px;
+    color: #507daf;
+    border-top: 1px solid #e4e5e6;
+    display: none;
+}    */
+.page-3 >.searchText{
+    border-top: 1px solid #efefef;
+//border:1px solid red;
+}
+.page-3 >.searchText > .searchCont{
+    line-height: 50px;
+    color: #507daf;
+    font-size: 15px;
+    margin-left: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+#searchResult{
+    line-height: 45px;
+    color: #333;
+    margin-left: 10px;
+}
+#searchResult li{
+    display: flex;
+    align-items: center;
+}
+#searchResult li a{
+    border-bottom: 1px solid #efefef;
+    display: inline-block;
+    flex: 1;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+#searchResult > li > svg{
+    color: #999;
+    margin-right: 7px;
+}
+.active{
+    display: block;
+}
+.hide{
+    display: none;
+}
+
+#searchResult{}
+
+/*热门搜索*/
+.page-3 > .hotsearch{
+    padding: 15px 10px 0;
+    border-top: 1px solid #efefef;
+}
+.page-3 > .hotsearch > .title{
+    font-size: 12px;
+    line-height: 12px;
+    color: #666;
+}
+.page-3 .panel{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.page-3 .panel > a{
+    padding: 0px 14px;
+    border: 1px solid #efefef;
+    border-radius: 32px;
+    display: inline-block;
+    line-height: 32px;
+    margin-top: 8px;
+    margin-right: 8px;
+    font-size: 14px;
+    color: #333;
+}
+

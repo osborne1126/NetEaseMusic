@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./playlist.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./home.css">
+    <title>歌单列表</title>
+</head>
+
+<body>
+    <div class="plWarp">
+        
+        <section class="plTop">
+            <div id="plTopbg" >
+                <!-- 背景图片 
+                <div class="plTopbg" style="background:url(${url}) no-repeat;"></div>
+                -->
+            </div>
+            
+            <div class="formDate">
+                <div id="fromCover" class="fromCover">
+                <!-- 封面图片 
+                <div class="superscript">歌单</div>
+                <div class="amount">
+                    <svg class="icon icon-listen" aria-hidden="true">
+                       <use xlink:href="#icon-listen"></use>
+                    </svg>
+                    <span>${volume}</span>
+                </div>
+                <img src="${url}" alt="歌单封面">
+                -->
+                </div>
+                <div id="fromTitle" class="fromTitle">
+
+         <!--   <h2>${musicListName}</h2>
+                <div class="avatar">
+                   <a href="#">
+                       <img src="${avatar}" alt="上传者头像">
+                       <span>${uploader}</span>
+                    </a>
+                </div> -->
+
+                </div>
+            </div>
+        </section>
+
+        <section class="plIntro">
+            <div class="pltags">
+                标签：
+                <em href="#">华语</em>
+                <em href="#">流行</em>
+                <em href="#">蓝调</em>
+            </div>
+            <div id="pltagsIntro" class="pltagsIntro plIntroHide">
+                <span>简介：思念是一种痛苦，思念是一种煎熬<br/></span>
+                <br/>
+                <span>用歌声可以体会到这种情感<br/></span>
+                <br/>
+                <span>就好像唱歌的人唱出的故事是你自己<br/></span>
+                <br/>
+                <span>只要你愿意听<br/></span>
+                <br/>
+                <span>用心去感受<br/></span>
+                <br/>
+                <span>你会发现：珍惜眼前才最重要！<br/></span>
+                <br/>
+                <span>不要失去了错过了才去思念与珍惜<br/></span>
+                <br/>
+                <span>Ps:摘自 迩ran《思念》</span>
+            </div>
+            <!--简介展开图标-->
+            <div id="pltagsToggle" class="pltagsToggle">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-down"></use>
+                </svg>
+            </div>
+        </section>
+
+        <section class="songs">
+            <h3 class="plsongsTitle">歌曲列表</h3>
+    <!-- 加载图标 -->
+<p id="loading" style="margin:0 auto;">
+        <img src="data:image/gif;base64,R0lGODlhKAAoAIABANM6Mf///yH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI2QURFODRFRkZBRTExRTU4NTg0QTdFMUQ4QkI2MTI1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI2QURFODRGRkZBRTExRTU4NTg0QTdFMUQ4QkI2MTI1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjZBREU4NENGRkFFMTFFNTg1ODRBN0UxRDhCQjYxMjUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjZBREU4NERGRkFFMTFFNTg1ODRBN0UxRDhCQjYxMjUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQJCgABACwAAAAAKAAoAAACeIyPqcvtD6OctNoD8rUZ7Np9VChKZAmdqKOuTOsqcIzMtGHfuaxxfbRrBGu/UfExXCRxxwRsGdg9m0IqpgmVYq1KbnTrMXmnYeAYzCtf1em2E11lf+VkFpxIP+f37td93dfF9zboVwhIaHfItJjoiBd4IzlJWalQAAAh+QQJCgABACwAAAAAKAAoAAACfIyPqcvtD6OctNqLs94WeB55AAiJ5GOeTaoubJu8nBzQGm0zuYF/0l7zIYAxocvIQzqAvVHROVRGoYemgqm0PpfZLjX53YqnV2nVWw5j1ejxkQ1Pc+Nu8FxeD4bJea2uzRf4hidotwJ4RvenmEg42IfoaFioB2N5iZmZUAAAIfkECQoAAQAsAAAAACgAKAAAAn+Mj6nL7Q+jnLRaCPK1GezafVTIaRIJmhE6qpg7sY98wg692g3+egnNm9mAup6C6EslD8hL8zcsGp4I6sI6jS6PWu42EAR3od8wVlyWor1s8m1chV/l2fQ3bm/j33m3n3F2tvfHREdYp1d4p5iIePgYqBbZB2goKIKZqbnJ+VAAACH5BAUKAAEALAAAAAAoACgAAAJ8jI+py+0PIwRUWkbB3Sjz731bKFpkGZ1mJaktm8KX29CT/Ng57ug9XwPeNC/iSLjwBY1DEFKhxDwTLl/0UH1eDVkmlNf9eqng8thqFquX606aTT6/pfJ6OznH5u/cfQBtF8cnSOgWSDcYBmeYqOWniFiod4hSaXmJmWlRAAA7" alt="">
+    </p>
+            <ol id="plsongs" class="list hotlist">
+                <!--
+        <li>
+            <a href="./song.html?id=${results[i].id}">
+                <div class="num">${[i+1]}</div>
+                <h3>
+                   ${song.name}
+                   <span>${song.reMark}</span>
+                </h3>
+                <p>
+                   <svg class="icon icon-sq" aria-hidden="true">
+                      <use xlink:href="#icon-sq"></use>
+                   </svg>
+                   ${song.singer} - ${song.album}
+                </p>
+                <div class="playButton" href="#">
+                    <svg class="icon icon-play" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+                    </svg>
+                </div>
+            </a>
+        </li> 
+                 -->
+            </ol>
+        </section>
+        <section class="plDn">
+            <a href="#">收藏歌单</a>
+        </section>
+    </div>
+
+    <script src="//at.alicdn.com/t/font_462409_nq298i3njc9s5rk9.js"></script>
+    <script src="./vendors/av-min.js"></script>
+    <script src="./scripts/av.js"></script>
+    <script src="./vendors/jquery.min.js"></script>
+    <script src="./playlist.js"></script>
+</body>
+</html>

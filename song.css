@@ -1,0 +1,248 @@
+ /*
+  .page{
+	display:flex;   //线性一字排开(以下2行)
+	flex-direction:column;
+	height:100vh;
+	background: transparent url() 
+	no-repeat center;   //模糊背景
+    background-size: cover;
+}*/
+
+  /* 背景图片模糊的before方法 */
+  .page{
+  	height:100vh;
+  	position:relative;
+  }
+  .page::before{
+  	content:'';
+  	height:100%;
+  	width:100%;
+  	top:0;
+  	left:0;
+  	z-index:-1;
+  	position:absolute;
+  	background:transparent url(http://music.163.com/api/img/blur/19149094509535913)
+  	 no-repeat center;
+  	background-size: cover;  /*覆盖全屏*/
+  	filter:blur(100px) brightness(0.2);   /*调模糊度、亮度*/
+  } 
+
+
+
+/*.disc-container{   //
+	//flex-grom:1;
+	position:relative;
+}*/
+
+/*播放暂停按钮*/
+section.disk{
+	//position:relative;
+}
+section.disk .icon-wrapper{
+	//flex-grom:1;
+	position:absolute;
+	z-index:1;
+	left:42%;
+	margin-top:32%;
+	//fill:white;
+	display:flex; justify-content:center; align-items:center;  /*按钮居中*/
+	border:1px solid white; height:56px; width:56px;
+	border-radius:50%; background:rgba(0,0,0,0.5);
+	/*left:50%; top:50%; transform:translate(-50%,-50%);*/
+}
+section.disk .icon{
+	width:56px;
+	fill:white;
+}
+
+/* 播放暂停键的设置*/
+section.disk .icon-pause{display:none;}
+section.disk.playing .icon-pause{display:black;}
+section.disk.playing .icon-play{display:none;}
+
+
+  /* 指针 */
+  section.pointer >img{
+  	width:96px;
+	//height:137px;
+	position:absolute;
+	left:45%;
+	top:-70px;
+   //border:1px solid red;
+	z-index:1;    /*在上一图层*/
+  }
+
+  /* 唱片组合 */     
+  section.disk{
+   //border:1px solid yellow;
+  	margin-top:70px;  
+  }
+  section.disk .circle{
+  	width:296px;
+  	height:296px;
+   //border:1px solid red;
+  	margin:0 auto;
+  	position:relative;
+  }
+  section.disk .circle::before{    /*黑胶图片*/
+  	content:'';
+  	height:100%;
+  	width:100%;
+  	top:0;
+  	left:0;
+  	//z-index:-1;
+  	position:absolute;
+  	background:transparent url(http://s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f) no-repeat center;   
+  	background-size: cover;
+  	//filter:blur(100px);  
+  }
+  section.disk .circle::after{    /*光韵图片*/
+  	content:'';
+  	height:100%;
+  	width:100%;
+  	top:0;
+  	left:0;
+  	//z-index:-1;
+  	position:absolute;
+  	background:transparent url(http://s3.music.126.net/m/s/img/disc_light.png?2bb24f3fd11569809b817b4988f12bc7) no-repeat center;    
+  	background-size: cover;
+  	//filter:blur(100px);  
+  }
+  section.disk .circle > img{    /* 歌曲引入图片封面*/
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-92px;
+	margin-top:-92px;
+	//transform:translate(-50%,-50%);
+	border-radius:50%;
+	border:none;  /* 删除border */
+ 
+  width:184px;
+  height:184px;
+ }
+  
+  section.disk .circle.playing > img,
+  section.disk .circle.playing::after{
+  	animation: spin 20s linear infinite ;   /*20s匀速无限次转动*/
+  	/*//animation-play-state: paused;   //running;   //paused; */
+  }
+  section.disk .circle.playing.pause > img,
+  section.disk .circle.playing.pause::after{
+    animation-play-state: paused;   /*唱片暂停，加pause*/
+  } 
+
+
+  @keyframes spin{}     //声明旋转规则
+	
+
+
+  /* 歌词 */
+  section.lyric{}
+  section.actions{}
+
+ section.song-description{
+	/*flex-grow:1;    //打开和下载在最下方*/
+ //border: 1px solid yellow;
+	color:#9E9D9E;
+	margin-top:25px;
+	padding:0 35px;
+	text-align:center;
+	line-height:2;
+}
+section.song-description > h2{
+	color:white;
+	font-size:18px;
+	line-height:1.1;
+	overflow: hidden;
+    white-space: nowrap;    /* */
+    text-overflow: ellipsis;
+}
+section.song-description >h2 > small{
+	font-size:16px;
+	color: #BCB69B;
+}
+section.song-description .lyric{
+	transition:transform 0.3s;  
+	/*//transition:transform .3s ease-out,-webkit-transform .3s ease-out;
+	//transform: translateY(-23px);*/
+    height: 92px;
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow:hidden;  /*隐藏多余歌词*/
+  //border: 1px solid red;
+}
+section.song-description>.lyric .scroll p{
+    color: #B4A8A1;
+    line-height: 2;
+}
+section.song-description>.lyric p.active{
+	color:white;     /*歌词高亮*/
+}
+
+/* 底部按钮 */
+section.links{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	color:#D43B32;
+	margin-top:75px;
+}
+section.links > a{
+	width:172.5px;
+	line-height:40px;
+	//margin-bottom:10px;
+	text-align:center;
+	border:1px solid #D43B32;
+	background:transparent;
+	padding:0 6px;
+	font-size:18px;
+
+	color:inherit;
+	text-decoration:none;
+	border-radius:40px;
+	leter-spacing:4px;   /*字体中间空格*/
+}
+section.links > a.main{
+	background:#D43B32;
+	//color:inherit;
+	//text-decoration:none;
+	color:white;
+	margin-left:10px;
+}
+
+	
+ /*声明旋转规则*/
+@keyframes spin{    
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+#playCover > .icon{
+    position: absolute;
+    z-index: 1;
+    fill: #fff;
+    width: 56px; /*15vw*/
+    height: 56px;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    background: rgba(0,0,0,.3);
+    transform: translate(-50%,-50%);
+}
+
+#playCover.playing .icon-playing{
+    display: none;
+}
+#playCover.playing.pause .icon-pause{
+    display: none;
+}
+#playCover.playing.pause .icon-playing{
+    display: block;
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>播放</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./song.css">
+</head>
+<body>
+<div class="page">
+  <!--模糊背景-->
+	<div id="pagebg" class="disc-container">
+    <!--<div class="pagebg" style="background: transparent url() no-repeat center;"></div> -->
+  </div>
+  <!--指针-->
+	<section class="pointer">
+		<img class="pointer" src="http://s3.music.126.net/m/s/img/needle.png?702cf6d95f29e2e594f53a3caab50e12" width=96 height=137 alt="">	
+	</section>
+ <!--播放暂停/包含黑胶光晕-->
+	<section class="disk">
+		  <div id="playCover" class="circle playing    " //class="icon-wrapper">
+        <!--id="playCover"   pause-->
+		      <svg class="icon icon-play">
+		         <use xlink:href="#icon-play"></use>
+	        </svg>
+	        <svg class="icon icon-pause">
+		         <use xlink:href="#icon-pause"></use>
+	        </svg>
+          <!-- //封面随歌曲调用 -->
+          <!-- <img src="#" width=184;height=184; alt="封面"> -->
+      </div>
+	</section>
+
+	<section class="song-description" data-reactid="15">
+        <h2 id="des-name">
+     <!-- <span>追光者</span>
+          <span>-</span>
+          <small>岑宁儿</small>  -->
+        </h2>
+        
+        <div class="lyric">
+          <div class="scroll">
+            <!--style="transform: translateY(-0px);"-->
+            <p></p>
+	        </div>
+        </div> 
+	</section>
+
+	<section class="links">
+        <a class="#" href="#">打开</a>      
+        <a class="main" href="#">下载</a>	
+	</section>
+
+</div>
+<script src="//at.alicdn.com/t/font_462409_nq298i3njc9s5rk9.js"></script>
+<script src="./vendors/jquery.min.js"></script>
+<script src="./vendors/av-min.js"></script>
+<script src="./scripts/av.js"></script>
+<script src="./song.js"></script>
+<script></script>
+
+</body>
+</html>
