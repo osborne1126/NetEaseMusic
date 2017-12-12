@@ -236,13 +236,13 @@ section.links > a.main{
     transform: translate(-50%,-50%);
 }
 
-#playCover.playing .icon-playing{
+#playCover.playing .icon-play{
     display: none;
 }
 #playCover.playing.pause .icon-pause{
     display: none;
 }
-#playCover.playing.pause .icon-playing{
+#playCover.playing.pause .icon-play{
     display: block;
 }
 

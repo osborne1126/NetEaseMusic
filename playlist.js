@@ -30,7 +30,7 @@ AV.Query.doCloudQuery(cql).then(function (data) {
                 </p>
                 <div class="playButton" href="#">
                     <svg class="icon icon-play" aria-hidden="true">
-                        <use xlink:href="#icon-play"></use>
+                        <use xlink:href="#icon-play-circled"></use>
                     </svg>
                 </div>
             </a>

@@ -28,7 +28,7 @@
   video.oncanplay=function(){
   	video.play()
     //console.log(lyric)
-    $('.disk').addClass('playing')    //播放暂停按钮制作
+   $('.disk').addClass('playing')    //播放暂停按钮制作
 	
 	$('.icon-pause').on('touchstart',function(){    //当暂停时音乐停止
 		video.pause()
