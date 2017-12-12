@@ -27,6 +27,7 @@
   
   video.oncanplay=function(){
   	video.play()
+    play()
     //console.log(lyric)
    $('.disk').addClass('playing')    //播放暂停按钮制作
 	
@@ -36,6 +37,7 @@
 	})
 	$('.icon-play').on('touchstart',function(){    //点击播放从新播放
 		video.play()
+    play()
 		$('.disk').addClass('playing')
 	}) 
 	}     

@@ -235,14 +235,18 @@ section.links > a.main{
     background: rgba(0,0,0,.3);
     transform: translate(-50%,-50%);
 }
-
+/*播放/暂停*/
+#playCover.playing .icon-pause{
+    display: none;
+}
+#playCover.playing .icon-play{
+    display: block;
+}
 #playCover.playing .icon-play{
     display: none;
 }
-#playCover.playing.pause .icon-pause{
-    display: none;
-}
-#playCover.playing.pause .icon-play{
+#playCover.playing .icon-pause{
     display: block;
 }
+
 
