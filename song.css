@@ -236,17 +236,15 @@ section.links > a.main{
     transform: translate(-50%,-50%);
 }
 /*播放/暂停*/
-#playCover.playing .icon-pause{
+section.disk .circle.icon-pause{
     display: none;
 }
-#playCover.playing .icon-play{
+section.disk .circle.playing .icon-pause{
     display: block;
 }
-#playCover.playing .icon-play{
+section.disk .circle.playing .icon-play{
     display: none;
 }
-#playCover.playing .icon-pause{
-    display: block;
-}
+
 
 

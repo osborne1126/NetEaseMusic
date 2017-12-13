@@ -149,31 +149,51 @@ section.plIntro{
 }
 
 
-section.plIntro > .pltagsIntro{
-    font-size: 14px;
-    color: #666;
-    line-height: 19px;   
-
+section.plIntro > .pltagsIntro.plIntroHide{
+    padding-bottom: 15px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+    height:64px;   
 }
-#pltagsIntro > .pltagsIntro.plIntroHide{}
-
-section.plIntro >.pltagsToggle{
+.pltagsIntro.plIntroHide .active{
+    height: 130px;
+}
+.pltagsIntro > span{
+    font-size:15px;
+    color: #666;   
+}
+section.plIntro >.pltagsToggle {
     text-align: right;
-    margin-bottom: 6px;
-}
+    margin-bottom: 6px;//
+} 
 .pltagsToggle > .icon{
+    width: 15px;
+    height: 15px;
+
+
+/*
+    position: absolute;
+    bottom: 0;
+    right: 0;   
+    display: none;
+
     fill: #999;
- //border:1px solid red; 
+ //border:1px solid red; */
+}
+.pltagsToggle > .icon.open {
+    display: none;
+}
+.pltagsToggle > .icon.down .hide {
+    display: none;
 }
 
+/*
 .flipy { 
     transform: rotateX(180deg); 
 }
-
+*/
 
 /*歌曲列表*/
 section .songs{}

@@ -27,18 +27,16 @@
   
   video.oncanplay=function(){
   	video.play()
-    play()
     //console.log(lyric)
-   $('.disk').addClass('playing')    //播放暂停按钮制作
+   $('.disk .circle').addClass('playing')    //播放暂停按钮制作
 	
 	$('.icon-pause').on('touchstart',function(){    //当暂停时音乐停止
 		video.pause()
-		$('.disk').removeClass('playing')
+		$('.disk .circle').removeClass('playing')
 	})
 	$('.icon-play').on('touchstart',function(){    //点击播放从新播放
 		video.play()
-    play()
-		$('.disk').addClass('playing')
+		$('.disk .circle').addClass('playing')
 	}) 
 	}     
   	
