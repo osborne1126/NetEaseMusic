@@ -1,48 +1,11 @@
 
-/*
-  // icon-arrow显示隐藏
-  $('.pltagsToggle').on('click','svg',function(e){
-    let $svg = $(e.currentTarget)
-    let $intro = $('.plIntro .pltagsIntro')
-    $svg.css('display','none').siblings('.icon').css('display','inline-block')
-    if($intro.hasClass('active')){
-      $intro.removeClass('active')
-    }else{
-      $intro.addClass('active')
-    }
-  })   */
-
-  
-   $('.icon-down').on('click',function(){
-     $('.pltagsIntro').addClass('active')
-     $('.icon-down').css('display','none')
-     $('.icon-open').css('display','inline-block')
-   })
-   $('.icon-open').on('click',function(){
-     $('.pltagsIntro').removeClass('active')
-     $('.icon-down').css('display','inline-block')
-     $('.icon-open').css('display','none')
-   })  
-
-/*
-//简介展开隐藏图标切换
-$('.pltagsToggle >icon-open').on('click', function () {
-    $('.pltagsIntro').addClass('hidden');
-    $('.pltagsToggle >icon-down').addClass('active').siblings().removeClass('active');
-});
-
-$('.pltagsToggle >icon-down').on('click', function () {
-    $('.pltagsIntro').removeClass('hidden');
-    $('.pltagsToggle >icon-open').addClass('active').siblings().removeClass('active');
-});  */
-
-/*
+//简介icon-down显示隐藏
 var $pltagsIntro = $('#pltagsIntro');
 var $plToggleSvg = $('#pltagsToggle > svg')
 $($pltagsIntro).click(function(){
     $pltagsIntro.toggleClass('plIntroHide')
     $plToggleSvg.toggleClass('flipy')
-});  */
+});  
 
 
 //从leancloud获取歌单列表

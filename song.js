@@ -28,15 +28,15 @@
   video.oncanplay=function(){
   	video.play()
     //console.log(lyric)
-   $('.disk .circle').addClass('playing')    //播放暂停按钮制作
+   //$('.circle .playing').addClass('playing')    //播放暂停按钮制作
 	
 	$('.icon-pause').on('touchstart',function(){    //当暂停时音乐停止
 		video.pause()
-		$('.disk .circle').removeClass('playing')
+		$('.circle .playing').addClass('pause')
 	})
 	$('.icon-play').on('touchstart',function(){    //点击播放从新播放
 		video.play()
-		$('.disk .circle').addClass('playing')
+		$('.circle .playing').removeClass('pause')
 	}) 
 	}     
   	
@@ -65,9 +65,11 @@
 
 
 //从leancloud 获取当前页面歌曲数据
+   let id = getParameterByName('id');/**/
+
 var $deSname = $("#des-name");
 var $playCover = $("#playCover");
-var $playbg = $("#pagebg");
+var $pagebg = $("#pagebg");
 var querysong = new AV.Query("Song");
 query.get(id).then(
   function(song) {
@@ -80,12 +82,13 @@ query.get(id).then(
     let img = `
         <img src="${cover}" alt="封面">
               `
-    let pagebg = `
-        <div class="pagebg" style="background: transparent url(${cover}) no-repeat center;"></div>
+    let bg = `
+        <div class="pagebg" style="background: transparent url(${cover}) no-repeat center;"></div> 
               `
+
     $deSname.append(h2);
     $playCover.append(img);
-    $playbg.append(pagebg);
+    $pagebg.append(bg);
   },
   function(error) {
     alert("获取歌曲失败");

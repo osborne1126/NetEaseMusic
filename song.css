@@ -13,7 +13,7 @@
   	height:100vh;
   	position:relative;
   }
-  .page::before{
+ .page::before{
   	content:'';
   	height:100%;
   	width:100%;
@@ -23,11 +23,9 @@
   	position:absolute;
   	background:transparent url(http://music.163.com/api/img/blur/19149094509535913)
   	 no-repeat center;
-  	background-size: cover;  /*覆盖全屏*/
+  	background-size: cover;  /*覆盖全屏*/   
   	filter:blur(100px) brightness(0.2);   /*调模糊度、亮度*/
   } 
-
-
 
 /*.disc-container{   //
 	//flex-grom:1;
@@ -238,6 +236,9 @@ section.links > a.main{
 /*播放/暂停*/
 section.disk .circle.icon-pause{
     display: none;
+}
+section.disk .circle.icon-play{
+    display: block;
 }
 section.disk .circle.playing .icon-pause{
     display: block;
