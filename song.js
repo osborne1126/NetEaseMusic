@@ -24,18 +24,18 @@
   video.oncanplay=function(){    //页面加载后自动播放
   	video.play()    //媒体api 播放歌曲
 		//console.log(lyric)
-		$('.circle .playing').addClass('playing')  //添加旋转cd动画
+		$('.circle ').addClass('playing')  //添加旋转cd动画
     // $('.needle').addClass('play') 
 	}
 
 	$('.icon-pause').on('touchstart',function(){    //当暂停时音乐停止
 		  video.pause()
-			$('.circle .playing').removeClass('playing')
+			$('.circle ').removeClass('playing')
 			//$('.needle').removeClass('play')
 	})
 	$('.icon-play').on('touchstart',function(){    //点击播放从新播放
 		  video.play()
-			$('.circle .playing').addClass('playing')
+			$('.circle ').addClass('playing')
 			//$('.needle').addClass('play')
 	}) 
 	    
@@ -83,7 +83,7 @@ query.get(id).then(
         <img src="${cover}" alt="封面">
               `
     let bg = `
-        <div class="pagebg" style="background: transparent url(${cover}) no-repeat center;"></div> 
+        <div class="pagebg" style="background:url(${cover}) no-repeat center;"></div> 
               `
 
     $deSname.append(h2);

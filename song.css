@@ -21,16 +21,16 @@
   	left:0;
   	z-index:-1;
   	position:absolute;
-  	background:transparent url(http://music.163.com/api/img/blur/19149094509535913)
+  	//background:transparent url(http://music.163.com/api/img/blur/19149094509535913)
   	 no-repeat center;
   	background-size: cover;  /*覆盖全屏*/   
-  	filter:blur(100px) brightness(0.2);   /*调模糊度、亮度*/
+  	filter:blur(9px) brightness(0.2);   /*调模糊度、亮度*/
   } 
-
-/*.disc-container{   //
+/*
+.song-background{   //
 	//flex-grom:1;
 	position:relative;
-}*/
+}  */
 
 /*播放暂停按钮*/
 section.disk{
@@ -53,11 +53,11 @@ section.disk .icon{
 	fill:white;
 }
 
-/* 播放暂停键的设置*/
+/* 播放暂停键样式的设置
 section.disk .icon-pause{display:none;}
 section.disk.playing .icon-pause{display:black;}
 section.disk.playing .icon-play{display:none;}
-
+*/
 
   /* 指针 */
   section.pointer >img{
@@ -120,14 +120,15 @@ section.disk.playing .icon-play{display:none;}
   height:184px;
  }
   
+  section.disk .circle > img,
+  section.disk .circle::after{
+  	animation: spin 20s linear infinite ;   /*20s匀速无限次转动*/
+  	animation-play-state: paused;  
+  }
   section.disk .circle.playing > img,
   section.disk .circle.playing::after{
-  	animation: spin 20s linear infinite ;   /*20s匀速无限次转动*/
-  	/*//animation-play-state: paused;   //running;   //paused; */
-  }
-  section.disk .circle.playing.pause > img,
-  section.disk .circle.playing.pause::after{
-    animation-play-state: paused;   /*唱片暂停，加pause*/
+	animation: spin 20s linear infinite ;
+    animation-play-state: running;   /*唱片暂停，加pause*/
   } 
 
 
