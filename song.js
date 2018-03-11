@@ -10,35 +10,35 @@
 	}
 
 
-
 //播放暂停歌曲
     let /*var*/ id = getParameterByName('id');
     //console.log(id)
   var query = new AV.Query('Song');    //看文档获取歌曲id
   query.get(id).then(function (song) {           //zuihou ()
   	//console.log(song)
-  	let {url,name,lyric} = song.attributes   //播放歌曲,歌词
+  	let {url,name,lyric,cover} = song.attributes   //播放歌曲,歌词
   	$('.song-description > h1').text(name)   //歌名引入到<h1>标签   ////
   	let video = document.createElement('video')
   	video.src = url
-  /*	video.oncanplay=function(){}   //首页引用歌词、
-  	video.play()
-  	//console.log(lyric)  */
   
-  video.oncanplay=function(){
-  	video.play()
-    //console.log(lyric)
-   //$('.circle .playing').addClass('playing')    //播放暂停按钮制作
-	
+  video.oncanplay=function(){    //页面加载后自动播放
+  	video.play()    //媒体api 播放歌曲
+		//console.log(lyric)
+		$('.circle .playing').addClass('playing')  //添加旋转cd动画
+    // $('.needle').addClass('play') 
+	}
+
 	$('.icon-pause').on('touchstart',function(){    //当暂停时音乐停止
-		video.pause()
-		$('.circle .playing').addClass('pause')
+		  video.pause()
+			$('.circle .playing').removeClass('playing')
+			//$('.needle').removeClass('play')
 	})
 	$('.icon-play').on('touchstart',function(){    //点击播放从新播放
-		video.play()
-		$('.circle .playing').removeClass('pause')
+		  video.play()
+			$('.circle .playing').addClass('playing')
+			//$('.needle').addClass('play')
 	}) 
-	}     
+	    
   	
     
  	//let hash = {}
@@ -122,7 +122,7 @@ query.get(id).then(
   			}else
   			 /*//if(array[i].time <= current && array[i+1].time > current){ */
           if(array[i + 1] != undefined && currentLineTime <= current && nextLineTime > current){ 
-  				console.log(array[i].lyric)
+  				      //console.log(array[i].lyric)   /*打印歌词 */
           $whichLine = $scrolls.eq(i);
   				break;
   			}

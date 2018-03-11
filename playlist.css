@@ -13,8 +13,8 @@ section.plTop{
     width: 100%;
     top: 0;
     left: 0;
-    //background: url(http://p1.music.126.net/SiatPTUWjTIazLViOF6bJg==/2923601418825523.webp?imageView&thumbnail=252x0&quality=75&tostatic=0&type=webp) no-repeat;
-    filter: blur(20px);
+    /*//background: url(http://p1.music.126.net/SiatPTUWjTIazLViOF6bJg==/2923601418825523.webp?imageView&thumbnail=252x0&quality=75&tostatic=0&type=webp) no-repeat; */
+    filter: blur(9px);  /*模糊*/
     position: absolute;
     transform: scale(1.5);
     background-position: 50%;
