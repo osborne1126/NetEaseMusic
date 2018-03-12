@@ -43,25 +43,19 @@
 }  
 
 /*播放暂停按钮 svg */
-/*section.disk{
-	//position:relative;
-}*/
 section.disk .icon-wrapper{
 	/*//flex-grom:1;
-	//fill:white;*/
+	//fill:white;
 	position:absolute;
 	z-index:1;
 	left:42%;
 	margin-top:32%;
-	display:flex; justify-content:center; align-items:center;  /*按钮居中*/
+	display:flex; justify-content:center; align-items:center;   //按钮居中
 	border:1px solid white; height:56px; width:56px;
 	border-radius:50%; background:rgba(0,0,0,0.5);
-	/*left:50%; top:50%; transform:translate(-50%,-50%);*/
+	//left:50%; top:50%; transform:translate(-50%,-50%); */
 }
-section.disk .icon{
-	width:56px;
-	fill:white;
-} 
+section.disk .icon{}
 
 #playCover > .icon{
     position: absolute;
@@ -69,7 +63,7 @@ section.disk .icon{
     fill: #fff;
     width: 56px;  /*15vw*/
     height: 56px;
-    display: flex;
+    /*//display: flex;*/
     top: 50%;
     left: 50%;
     border-radius: 50%;
@@ -93,7 +87,8 @@ section.disk .icon{
   /* 唱片组合 */     
   section.disk{
    /*//border:1px solid yellow;*/
-  	margin-top:70px;  
+	  margin-top:70px;   
+	position:relative;
   }
   section.disk > .circle{
   	width:296px;
@@ -150,7 +145,9 @@ section.disk .icon{
     animation-play-state: paused;   //唱片暂停，加pause
   } */
 
-  section.disk .circle > img,
+  section.disk .circle > img{
+	animation: spin 20s linear infinite;
+  }
   section.disk .circle::after{
     animation: spin 20s linear infinite;
   }
@@ -172,11 +169,11 @@ section.disk .icon{
 
 
 /*播放/暂停样式的设置*/
-section.disk .circle.pause .icon-pause{
-    display: none;
-}
 section.disk .circle.pause .icon-play{
     display: block;
+}
+section.disk .circle.pause .icon-pause{
+    display: none;
 }
 section.disk .circle.playing .icon-pause{
     display: block;
