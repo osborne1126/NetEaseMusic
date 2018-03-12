@@ -1,3 +1,4 @@
+
 /*如何获取id*/
 	function getParameterByName(name,url){     
 		if(!url) url = window.location.href;
@@ -29,16 +30,20 @@
   video.oncanplay=function(){    /*页面加载后自动播放*/
   	video.play()    /*媒体api 播放歌曲*/
 		//console.log(lyric)
-		$('.disk .circle').addClass('playing')  /*添加旋转cd动画*/ 
+		//$('.disk .circle').addClass('playing')  /*添加旋转cd动画*/
+		$('.circle').addClass('playing').removeClass('pause')  /*添加旋转cd动画*/  
 	}
 
+/*播放/暂停*/
 	$('.icon-pause').on('click',function(){    /*当暂停时音乐停止*/
 		  video.pause()
-			$('.disk .circle').removeClass('playing')
+			//$('.disk .circle').removeClass('playing')
+			$('.circle').addClass('pause').removeClass('playing')
 	})
 	$('.icon-play').on('click',function(){    /*点击播放从新播放*/
 		  video.play()
-			$('.disk .circle').addClass('playing')
+			//$('.disk .circle').addClass('playing')
+			$('.circle').addClass('playing').removeClass('pause')
 	}) 
 
     
@@ -139,5 +144,8 @@ query.get(id).then(
   	},500)
 
 
-  })
+	})
+	
+
+
     

@@ -37,15 +37,15 @@
   transform-origin: center top;
   transition: opacity .3s linear;
   z-index: -1;
-  filter: blur(40px) brightness(0.2);
+  filter: blur(100px) ; /*亮度 brightness(0.2)； 灰度 grayscale(1)；*/
   background-size: cover;
   background-position:center;
 }  
 
 /*播放暂停按钮 svg */
-section.disk{
-	/*//position:relative;*/
-}
+/*section.disk{
+	//position:relative;
+}*/
 section.disk .icon-wrapper{
 	/*//flex-grom:1;
 	//fill:white;*/
@@ -74,7 +74,9 @@ section.disk .icon{
     left: 50%;
     border-radius: 50%;
     background: rgba(0,0,0,.3);
-    transform: translate(-50%,-50%);
+	/*transform: translate(-50%,-50%);   ///**/
+	margin-left: -28px;
+    margin-top: -28px;
 }
 
   /* 指针 */
@@ -93,14 +95,14 @@ section.disk .icon{
    /*//border:1px solid yellow;*/
   	margin-top:70px;  
   }
-  section.disk .circle{
+  section.disk > .circle{
   	width:296px;
   	height:296px;
    /*//border:1px solid red;*/
   	margin:0 auto;
   	position:relative;
   }
-  section.disk .circle::before{    /*黑胶图片*/
+  section.disk > .circle::before{    /*黑胶图片*/
   	content:'';
   	height:100%;
   	width:100%;
@@ -112,7 +114,7 @@ section.disk .icon{
 	  /*//filter:blur(100px); 
 	  //z-index:-1; */
   }
-  section.disk .circle::after{    /*光韵图片*/
+  section.disk > .circle::after{    /*光韵图片*/
   	content:'';
   	height:100%;
   	width:100%;
@@ -122,9 +124,9 @@ section.disk .icon{
   	background:transparent url(http://s3.music.126.net/m/s/img/disc_light.png?2bb24f3fd11569809b817b4988f12bc7) no-repeat center;    
   	background-size: cover;
 	  /*//filter:blur(100px);
-	  //z-index:-1;*/  
+	  //z-index:-1;*/ 
   }
-  section.disk .circle > img{    /* 歌曲引入图片封面*/
+  section.disk > .circle > img{    /* 歌曲引入图片封面*/
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -133,23 +135,29 @@ section.disk .icon{
 	/*//transform:translate(-50%,-50%);*/
 	border-radius:50%;
 	border:none;  /* 删除border */
- 
+	
   width:184px;
   height:184px;
  }
   
-  section.disk .circle.playing > img,
+ /* section.disk .circle.playing > img,
   section.disk .circle.playing::after{
-	  animation: spin 20s linear infinite ;   /*20s匀速无限次转动*/
-  }
- /* section.disck .circle.playing.pause > img,
-  section.disck .circle.playing.pause::after{
+	  animation: spin 20s linear infinite ;   //20s匀速无限次转动
+	  //animation-play-state: running;
+	}
+  section.disk .circle.playing.pause > img,
+  section.disk .circle.playing.pause::after{
     animation-play-state: paused;   //唱片暂停，加pause
   } */
-  section.disck .circle > img,
-  section.disck .circle::after{
-    animation-play-state: paused;   /*唱片暂停，加pause*/
-  } 
+
+  section.disk .circle > img,
+  section.disk .circle::after{
+    animation: spin 20s linear infinite;
+  }
+  section.disk .circle.pause > img,
+  section.disk .circle.pause::after{
+    animation-play-state: paused;
+  }
 
   	
  /*声明旋转规则*/
@@ -162,11 +170,12 @@ section.disk .icon{
     }
 }
 
+
 /*播放/暂停样式的设置*/
-section.disk .circle.icon-pause{
+section.disk .circle.pause .icon-pause{
     display: none;
 }
-section.disk .circle.icon-play{
+section.disk .circle.pause .icon-play{
     display: block;
 }
 section.disk .circle.playing .icon-pause{
@@ -175,6 +184,19 @@ section.disk .circle.playing .icon-pause{
 section.disk .circle.playing .icon-play{
     display: none;
 }
+/*播放/暂停样式的设置
+section.disk .circle .icon-pause{
+    display: none;
+}
+section.disk .circle .icon-play{
+    display: block;
+}
+section.disk .circle .playing .icon-pause{
+    display: block;
+}
+section.disk .circle .playing .icon-play{
+    display: none;
+}*/
 
 
 
@@ -201,7 +223,8 @@ section.song-description > h2{
 }
 section.song-description >h2 > small{
 	font-size:16px;
-	color: #BCB69B;
+	/*color: #BCB69B;*/
+	color:white;
 }
 section.song-description .lyric{
 	transition:transform 0.3s;  
