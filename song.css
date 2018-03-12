@@ -21,28 +21,38 @@
   	left:0;
   	z-index:-1;
   	position:absolute;
-  	//background:transparent url(http://music.163.com/api/img/blur/19149094509535913)
-  	 no-repeat center;
-  	background-size: cover;  /*覆盖全屏*/   
-  	filter:blur(9px) brightness(0.2);   /*调模糊度、亮度*/
+  	/*//background:transparent url(http://music.163.com/api/img/blur/19149094509535913) no-repeat center;
+  	//background-size: cover;  //*覆盖全屏   
+  	//filter:blur(40px) brightness(0.2);   //*调模糊度、亮度 */
   } 
-/*
-.song-background{   //
-	//flex-grom:1;
-	position:relative;
-}  */
 
-/*播放暂停按钮*/
+.song-background{   
+	/*//flex-grom:1;*/
+	background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 50%;
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+ /*transform: scale(1.5);    //缩放*/
+  transform-origin: center top;
+  transition: opacity .3s linear;
+  z-index: -1;
+  filter: blur(40px) brightness(0.2);
+  background-size: cover;
+  background-position:center;
+}  
+
+/*播放暂停按钮 svg */
 section.disk{
-	//position:relative;
+	/*//position:relative;*/
 }
 section.disk .icon-wrapper{
-	//flex-grom:1;
+	/*//flex-grom:1;
+	//fill:white;*/
 	position:absolute;
 	z-index:1;
 	left:42%;
 	margin-top:32%;
-	//fill:white;
 	display:flex; justify-content:center; align-items:center;  /*按钮居中*/
 	border:1px solid white; height:56px; width:56px;
 	border-radius:50%; background:rgba(0,0,0,0.5);
@@ -51,34 +61,42 @@ section.disk .icon-wrapper{
 section.disk .icon{
 	width:56px;
 	fill:white;
+} 
+
+#playCover > .icon{
+    position: absolute;
+    z-index: 1;
+    fill: #fff;
+    width: 56px;  /*15vw*/
+    height: 56px;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    background: rgba(0,0,0,.3);
+    transform: translate(-50%,-50%);
 }
 
-/* 播放暂停键样式的设置
-section.disk .icon-pause{display:none;}
-section.disk.playing .icon-pause{display:black;}
-section.disk.playing .icon-play{display:none;}
-*/
-
   /* 指针 */
-  section.pointer >img{
+  section.disc-container >img{
   	width:96px;
-	//height:137px;
+	/*//height:137px;
+	//border:1px solid red;*/
 	position:absolute;
 	left:45%;
 	top:-70px;
-   //border:1px solid red;
 	z-index:1;    /*在上一图层*/
   }
 
   /* 唱片组合 */     
   section.disk{
-   //border:1px solid yellow;
+   /*//border:1px solid yellow;*/
   	margin-top:70px;  
   }
   section.disk .circle{
   	width:296px;
   	height:296px;
-   //border:1px solid red;
+   /*//border:1px solid red;*/
   	margin:0 auto;
   	position:relative;
   }
@@ -87,24 +105,24 @@ section.disk.playing .icon-play{display:none;}
   	height:100%;
   	width:100%;
   	top:0;
-  	left:0;
-  	//z-index:-1;
+  	left:0;	
   	position:absolute;
   	background:transparent url(http://s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f) no-repeat center;   
   	background-size: cover;
-  	//filter:blur(100px);  
+	  /*//filter:blur(100px); 
+	  //z-index:-1; */
   }
   section.disk .circle::after{    /*光韵图片*/
   	content:'';
   	height:100%;
   	width:100%;
   	top:0;
-  	left:0;
-  	//z-index:-1;
+  	left:0;	
   	position:absolute;
   	background:transparent url(http://s3.music.126.net/m/s/img/disc_light.png?2bb24f3fd11569809b817b4988f12bc7) no-repeat center;    
   	background-size: cover;
-  	//filter:blur(100px);  
+	  /*//filter:blur(100px);
+	  //z-index:-1;*/  
   }
   section.disk .circle > img{    /* 歌曲引入图片封面*/
 	position:absolute;
@@ -112,7 +130,7 @@ section.disk.playing .icon-play{display:none;}
 	left:50%;
 	margin-left:-92px;
 	margin-top:-92px;
-	//transform:translate(-50%,-50%);
+	/*//transform:translate(-50%,-50%);*/
 	border-radius:50%;
 	border:none;  /* 删除border */
  
@@ -120,20 +138,44 @@ section.disk.playing .icon-play{display:none;}
   height:184px;
  }
   
-  section.disk .circle > img,
-  section.disk .circle::after{
-  	animation: spin 20s linear infinite ;   /*20s匀速无限次转动*/
-  	animation-play-state: paused;  
-  }
   section.disk .circle.playing > img,
   section.disk .circle.playing::after{
-	animation: spin 20s linear infinite ;
-    animation-play-state: running;   /*唱片暂停，加pause*/
+	  animation: spin 20s linear infinite ;   /*20s匀速无限次转动*/
+  }
+ /* section.disck .circle.playing.pause > img,
+  section.disck .circle.playing.pause::after{
+    animation-play-state: paused;   //唱片暂停，加pause
+  } */
+  section.disck .circle > img,
+  section.disck .circle::after{
+    animation-play-state: paused;   /*唱片暂停，加pause*/
   } 
 
+  	
+ /*声明旋转规则*/
+@keyframes spin{    
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
 
-  @keyframes spin{}     //声明旋转规则
-	
+/*播放/暂停样式的设置*/
+section.disk .circle.icon-pause{
+    display: none;
+}
+section.disk .circle.icon-play{
+    display: block;
+}
+section.disk .circle.playing .icon-pause{
+    display: block;
+}
+section.disk .circle.playing .icon-play{
+    display: none;
+}
+
 
 
   /* 歌词 */
@@ -142,7 +184,7 @@ section.disk.playing .icon-play{display:none;}
 
  section.song-description{
 	/*flex-grow:1;    //打开和下载在最下方*/
- //border: 1px solid yellow;
+ /*//border: 1px solid yellow;*/
 	color:#9E9D9E;
 	margin-top:25px;
 	padding:0 35px;
@@ -170,7 +212,7 @@ section.song-description .lyric{
     font-size: 16px;
     line-height: 1.5;
     overflow:hidden;  /*隐藏多余歌词*/
-  //border: 1px solid red;
+  /*//border: 1px solid red;*/
 }
 section.song-description>.lyric .scroll p{
     color: #B4A8A1;
@@ -191,7 +233,7 @@ section.links{
 section.links > a{
 	width:172.5px;
 	line-height:40px;
-	//margin-bottom:10px;
+	/*//margin-bottom:10px;*/
 	text-align:center;
 	border:1px solid #D43B32;
 	background:transparent;
@@ -205,48 +247,12 @@ section.links > a{
 }
 section.links > a.main{
 	background:#D43B32;
-	//color:inherit;
-	//text-decoration:none;
+	/*//color:inherit;
+	//text-decoration:none;*/
 	color:white;
 	margin-left:10px;
 }
 
-	
- /*声明旋转规则*/
-@keyframes spin{    
-    0%{
-        transform: rotateZ(0deg);
-    }
-    100%{
-        transform: rotateZ(360deg);
-    }
-}
-#playCover > .icon{
-    position: absolute;
-    z-index: 1;
-    fill: #fff;
-    width: 56px; /*15vw*/
-    height: 56px;
-    display: flex;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background: rgba(0,0,0,.3);
-    transform: translate(-50%,-50%);
-}
-/*播放/暂停*/
-section.disk .circle.icon-pause{
-    display: none;
-}
-section.disk .circle.icon-play{
-    display: block;
-}
-section.disk .circle.playing .icon-pause{
-    display: block;
-}
-section.disk .circle.playing .icon-play{
-    display: none;
-}
 
 
 

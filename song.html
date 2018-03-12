@@ -11,25 +11,29 @@
 <div class="page">
   <!--模糊背景-->
 	<div id="pagebg" class="song-background">
-    <!--<div class="pagebg" style="background: transparent url() no-repeat center;"></div>  -->
+    <!--<div class="song-background" style="background: transparent url() no-repeat center;"></div>  -->
   </div>
+
   <!--指针-->
-	<section class="pointer">
+	<section class="disc-container">
 		<img class="pointer" src="http://s3.music.126.net/m/s/img/needle.png?702cf6d95f29e2e594f53a3caab50e12" width=96 height=137 alt="">	
 	</section>
- <!--播放暂停/包含黑胶光晕-->
+ <!--封面/包含黑胶光晕-->
 	<section class="disk">
 		  <div id="playCover" class="circle  " >
-        <!--加class="icon-wrapper"  playing    pause-->
+        <!-- //封面随歌曲调用 -->
+          <!-- <img src="#" width=184;height=184; alt="封面"> -->
+      
+<!--播放暂停按钮-->
+        <!--<div class="icon-wrapper">-->
 		      <svg class="icon icon-play">
 		         <use xlink:href="#icon-play"></use>
 	        </svg>
 	        <svg class="icon icon-pause">
 		         <use xlink:href="#icon-pause"></use>
 	        </svg>
-          <!-- //封面随歌曲调用 -->
-          <!-- <img src="#" width=184;height=184; alt="封面"> -->
-      </div>
+      <!--  </div>-->
+    </div>
 	</section>
 
 	<section class="song-description" data-reactid="15">
