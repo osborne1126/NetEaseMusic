@@ -22,8 +22,8 @@ body{
 .noCollapse::before{ 
     content:'';  
 	display:table;
-   //border:1px solid red;  /* 解决margin合并问题(以下2行)，相当于有实线遮挡 */
-	//width:100%; 
+   /*//border:1px solid red;   //解决margin合并问题(以下2行)，相当于有实线遮挡 
+	//width:100%; */
 }
 .noCollapse::after{  /* 谁不想合并在html上加noCollapse */
 	content:'';
@@ -54,7 +54,7 @@ section.topbar .logo>svg{
 section.topbar > a{
 	color:white;
 	display:inline-block;
-	//border:1px solid;
+	/*//border:1px solid;*/
 	font-size:15px;    /* //4.6875vw */
 	padding:5px 11px;   /* //1.5625vw  3.4375vw*/
 	line-height:20px;   /* //6.25vw */
@@ -82,7 +82,7 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	width:33.333333%;
 	text-align:center;
 	line-height:20px;
-	//padding:10px 0;
+	/*//padding:10px 0;*/
 	display:flex;     /*自动收缩*//* 一起组合为可实现自动居中(以下3行) */
 	justify-content:center;   /*左右居中*/
 	align-items:center;   /*上下居中*/
@@ -95,9 +95,9 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 	top:1px;
 }
 .tabs > li.active{
-	//background:red;
-	color:#D43C33;
-	//position:relative;
+    color:#D43C33;
+	/*//background:red;
+	//position:relative;*/
 }
 .tabs > li.active > .text{}
 .tabs > li.active > .text::after{   /*active时的底边状态*/
@@ -119,11 +119,11 @@ section.topbar > a::after{    /* 利用伪类元素制作边框border */
 }
 .tab-content > li.active{
 	display:block;
-	//background:red;
+	/*//background:red;*/
 }
 
-//.noCollapse::after{}
-//.noCollapse::before{}
+.noCollapse::after{}
+.noCollapse::before{}
 
 section.globalTabs{} 
 /* 推荐歌单 */
@@ -158,7 +158,7 @@ section.playlists > ol.songs{
 .cover >.amount .icon-listen{
     margin-top: 2px;
     margin-right: 3px;
- //border:1px solid red; /**/
+ /*//border:1px solid red; */
 }
 .cover >.amount::after {
     content: " ";
@@ -181,11 +181,11 @@ section.playlists > ol.songs > li{
 }
 section.playlists > ol.songs > li >a> p{ 
      padding:6px 2px 0 6px;
-     //height:36px;
      line-height:1.2; 
      color:#333;
+     /*//height:36px;
     //text-overflow:ellipsis;
- //border:1px solid red;
+ //border:1px solid red;*/
 	display: -webkit-box;    /*文字两行以上变省略号(以下4行) */
 	-webkit-line-clamp:2;  /*行数*/
 	-webkit-box-orient:vertical;
@@ -193,7 +193,7 @@ section.playlists > ol.songs > li >a> p{
 }
 section.playlists > ol.songs > li img{
 	width:100%;
-	//height:123px;   /* 写高度防止浏览器刷新时出现跳闪塌陷问题 */
+	/*//height:123px;   // 写高度防止浏览器刷新时出现跳闪塌陷问题 */
 }
 
 /* 最新音乐列表 */
@@ -227,7 +227,7 @@ section.songs > .list > li > a > p{
 }
 section.songs > .list > li{
 	position:relative;
-	//border:1px solid red;
+	/*//border:1px solid red;*/
 	margin-left:10px;
 	padding-bottom:8px;
 	padding-top:7px;
@@ -242,7 +242,7 @@ section.songs > .list .playButton{
 }
 section.songs > .list .icon-sq{
 	fill:#FE672E;            /* fill为svg属性*/
-//border:1px solid red; /**/
+/*//border:1px solid red; //*/
 	width: 16px;
     height: 14px;
     margin-right: 4px;
@@ -251,7 +251,7 @@ section.songs > .list .icon-sq{
 section.songs > .list .icon-play{
 	width:25px;
 	height:25px;
- //border:1px solid red; /**/
+ /*//border:1px solid red; //*/
 	vertical-align:middle;  /* 图标向下移动真正居中 */
 	fill:#AAAAAA;
 }
@@ -282,8 +282,8 @@ section.art .link-wrapper > a{
 section.art .copyright{
 	font-size:12px;
 	color:#888;
-	//text-align:center;
-	//margin-bottom:5px;
+	/*//text-align:center;
+	//margin-bottom:5px;*/
 	transform: scale(.75);   /* 字体不能小于12px，进行缩放 */	
 }
 
@@ -296,7 +296,7 @@ section.art .copyright{
 .page-2>.banner{
     position:relative;
     padding-top: 38.9%;
-    //overflow:hidden;
+   /* //overflow:hidden;*/
     background: url(http://s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
     background-size: cover;   /*背景图片*/
 }
@@ -392,7 +392,7 @@ section.hotdn > a{
     //left:5px;  */
 }
 .page-3 >.inputWrapper .magnifier{ 
- //border:1px solid red; /**/
+ /*//border:1px solid red; //*/
     position: absolute;
     top: 7px;
     left: 8px;
@@ -402,7 +402,7 @@ section.hotdn > a{
     top: 7px;
     right: 8px;
     color: #999;
- //border:1px solid red; /**/
+ /*//border:1px solid red; //*/
 }
 .page-3 input {
     width: 100%;
@@ -438,7 +438,7 @@ section .searchText{
 }    */
 .page-3 >.searchText{
     border-top: 1px solid #efefef;
-//border:1px solid red;
+/*//border:1px solid red;*/
 }
 .page-3 >.searchText > .searchCont{
     line-height: 50px;

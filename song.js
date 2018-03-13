@@ -46,10 +46,11 @@
 			$('.circle').addClass('playing').removeClass('pause')
 	}) 
 
-    
+		
+/*分析歌词，获取*/
  	//let hash = {}
-  	let array = []            /*分析歌词，获取*/
-  	let parts = lyric.split('\n')      
+  	let array = []            
+  	let parts = lyric.split('\n')     /*  匹配回车 字符串'\n' 正则/\\n/  */ 
   	parts.forEach(function(string,index){    /*旧方法for(var i=0;i<parts.length)	//console.log(string)*/
   		let xxx = string.split(']')
   		//console.log(xxx)
@@ -89,7 +90,7 @@ query.get(id).then(
         <img src="${cover}" alt="封面">
               `
     let bg = `
-        <div class="song-background" style="background:url(${cover}) no-repeat;"></div> 
+        <div class="song-background" style="background:url(${cover}) no-repeat center; background-size: cover;"></div> 
 							`
     $deSname.append(h2);
     $playCover.append(img);
@@ -113,6 +114,7 @@ query.get(id).then(
     })
 
 
+/*设置歌词同步显示*/
   	setInterval(function(){    /*匹配时间*/
   		//console.log(video.currentTime)
       let $scrolls = $(".scroll>p");   
@@ -128,24 +130,22 @@ query.get(id).then(
   			 /*//if(array[i].time <= current && array[i+1].time > current){ */
           if(array[i + 1] != undefined && currentLineTime <= current && nextLineTime > current){ 
   				      //console.log(array[i].lyric)   /*打印歌词 */
-          $whichLine = $scrolls.eq(i);
+          $whichLine = $scrolls.eq(i);    /*条件：大于上一句小于下一句，刚好在中间的歌词*/
   				break;
   			}
   		}
 
     if($whichLine){    /*歌词滚动*/
 			$whichLine.addClass('active').prev().removeClass('active')  /*当前歌词高亮*/
-			let top = $whichLine.offset().top
-			let scrollTop = $('.scroll').offset().top
-      let delta = top - scrollTop - $('.lyric').height()/3 
-			$('.scroll').css('transform',`translateY(-${delta}px)`)
+			let top = $whichLine.offset().top   /*歌词与屏幕顶端的距离*/
+			let scrollTop = $('.scroll').offset().top   /*歌词窗口与屏幕顶端的距离*/
+      let delta = top - scrollTop - $('.lyric').height()/3   /*两者距离相减 除于3行歌词 */
+			$('.scroll').css('transform',`translateY(-${delta}px)`)   /* 计算歌词滚动的位置 加上css滚动动画*/
 	    }
 
   	},500)
 
 
-	})
+	})  /*数据AV.Query闭合标签*/ 
 	
-
-
-    
+  

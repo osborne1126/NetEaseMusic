@@ -3,8 +3,7 @@
 	display:flex;   //线性一字排开(以下2行)
 	flex-direction:column;
 	height:100vh;
-	background: transparent url() 
-	no-repeat center;   //模糊背景
+	background: transparent url() no-repeat center; 
     background-size: cover;
 }*/
 
@@ -23,28 +22,23 @@
   	position:absolute;
   	/*//background:transparent url(http://music.163.com/api/img/blur/19149094509535913) no-repeat center;
   	//background-size: cover;  //*覆盖全屏   
-  	//filter:blur(40px) brightness(0.2);   //*调模糊度、亮度 */
+	//filter:blur(40px) brightness(0.2);   //*调模糊度、亮度 */
   } 
 
-.song-background{   
+  .song-background{  
 	/*//flex-grom:1;*/
-	background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-position: 50%;
+ /* background-size: auto 100% ; 基本语法：background-size: length | percentage | cover | contain; */
   position: absolute;
   top: 0; right: 0; left: 0; bottom: 0;
- /*transform: scale(1.5);    //缩放*/
-  transform-origin: center top;
-  transition: opacity .3s linear;
   z-index: -1;
-  filter: blur(100px) ; /*亮度 brightness(0.2)； 灰度 grayscale(1)；*/
   background-size: cover;
-  background-position:center;
+  /*transform: scaleY(1.09); //缩放*/
+  filter: blur(40px) brightness(0.7); /*亮度 brightness(0.2)； 灰度 grayscale(1)；*/
 }  
 
 /*播放暂停按钮 svg */
-section.disk .icon-wrapper{
-	/*//flex-grom:1;
+/*section.disk .icon-wrapper{
+	//flex-grom:1;
 	//fill:white;
 	position:absolute;
 	z-index:1;
@@ -53,9 +47,9 @@ section.disk .icon-wrapper{
 	display:flex; justify-content:center; align-items:center;   //按钮居中
 	border:1px solid white; height:56px; width:56px;
 	border-radius:50%; background:rgba(0,0,0,0.5);
-	//left:50%; top:50%; transform:translate(-50%,-50%); */
-}
-section.disk .icon{}
+	//left:50%; top:50%; transform:translate(-50%,-50%); 
+}*/
+/*section.disk .icon{}*/
 
 #playCover > .icon{
     position: absolute;
@@ -63,7 +57,6 @@ section.disk .icon{}
     fill: #fff;
     width: 56px;  /*15vw*/
     height: 56px;
-    /*//display: flex;*/
     top: 50%;
     left: 50%;
     border-radius: 50%;
@@ -181,20 +174,6 @@ section.disk .circle.playing .icon-pause{
 section.disk .circle.playing .icon-play{
     display: none;
 }
-/*播放/暂停样式的设置
-section.disk .circle .icon-pause{
-    display: none;
-}
-section.disk .circle .icon-play{
-    display: block;
-}
-section.disk .circle .playing .icon-pause{
-    display: block;
-}
-section.disk .circle .playing .icon-play{
-    display: none;
-}*/
-
 
 
   /* 歌词 */

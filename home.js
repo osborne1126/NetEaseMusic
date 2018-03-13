@@ -27,7 +27,7 @@ let $olSongs = $('ol#songs')
 var query = new AV.Query('Song');
 /*query.find().then(function (results) {   //比较查询 之前用的
   //console.log(results)  */
-var cql = 'select * from Song';/* where hot = true';*/   //CQL 查询
+var cql = 'select * from Song'; /* where hot = true';*/   //CQL 查询
   AV.Query.doCloudQuery(cql).then(function (data) {
     
  	$('#loading').remove()    //数据加载成功后loading移除 
